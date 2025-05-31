@@ -9,7 +9,7 @@ const signup = () => {
    const {userData, setUserData } = useContext(UserDataContext)
     const [show, setShow] = useState(false)
     const navigate = useNavigate()
-    const data=  useContext(AuthDataContext)
+    const {ServerUrl}=  useContext(AuthDataContext)
     const [formdata, setformdata] = useState({
         firstname:'',
         lastname:'',
@@ -27,8 +27,8 @@ const signup = () => {
         e.preventDefault();
         setloading(true)
         try {
-            console.log('hello',data.ServerUrl)
-          let response = await axios.post('http://localhost:3000'+'/api/auth/signup',{
+            
+          let response = await axios.post(ServerUrl+'/api/auth/signup',{
             firstname: formdata.firstname,
             lastname: formdata.lastname,
             username: formdata.username,
@@ -58,7 +58,7 @@ const signup = () => {
                   seterror('')
               },3000)
         }
-        console.log('hello',data.ServerUrl)
+        
 
     }
 
