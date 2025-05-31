@@ -16,14 +16,14 @@ const app = express();
 const server = http.createServer(app)
 export const io = new Server(server,{
   cors:({
-    origin: 'http://localhost:5173',
+    origin: 'https://linkdlclone-frontend-n3dn.onrender.com',
     credentials: true
   })
 })
 app.use(cookieParser());
 app.use(express.json());
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: 'https://linkdlclone-frontend-n3dn.onrender.com',
   credentials: true
 }));
 
