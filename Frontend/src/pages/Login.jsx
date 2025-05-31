@@ -8,7 +8,7 @@ const login = () => {
   const [show, setShow] = useState(false)
   const {userData, setUserData } = useContext(UserDataContext)
   const navigate = useNavigate()
-  const data=  useContext(AuthDataContext)
+  const {ServerUrl}=  useContext(AuthDataContext)
   const [formdata, setformdata] = useState({
       email:'',
       password:''
@@ -23,8 +23,8 @@ const [error, seterror] = useState('')
       e.preventDefault();
       setloading(true)
       try {
-          console.log('hello',data.ServerUrl)
-        let response = await axios.post('http://localhost:3000'+'/api/auth/login',{
+          
+        let response = await axios.post(ServerUrl+'/api/auth/login',{
           email: formdata.email,
           password: formdata.password
         },{withCredentials:true}) 
@@ -48,14 +48,14 @@ const [error, seterror] = useState('')
                 seterror('')
             },3000)
       }
-      console.log('hello',data.ServerUrl)
+      
 
   }
 
 return (
   <div className='w-screen h-screen bg-white flex flex-col justify-center items-center gap-[10px]'>
       <div className='p-[25px] lg:p-[33px] w-full h-20 flex items-start'>
-          <img src={logo} alt="" />
+          <img src={logo} />
       </div>
       <form onSubmit={handleSignIn} className='w-[90%] max-w-[400px] h-[400px] md:shadow-2xl flex flex-col justify-center gap-4 p-4 rounded-xl'>
          <h1 className='text-gray-800 text-3xl font-semibold mb-6'>Sign Up</h1>
