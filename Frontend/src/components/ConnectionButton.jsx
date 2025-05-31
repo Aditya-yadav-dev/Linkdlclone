@@ -11,7 +11,7 @@ const ConnectionButton = ({userId}) => {
  const [status, setstatus] = useState('')
    const {ServerUrl} = useContext(AuthDataContext)
  const {userData} = useContext(UserDataContext)
- let socket = io("http://localhost:3000")
+ let socket = io("https://linkdlclone.onrender.com")
    const handleSendConnection = async() => { 
        try {
         let result = await axios.post(`${ServerUrl}/api/connection/send/${userId}`,{
