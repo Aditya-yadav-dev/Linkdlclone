@@ -1,6 +1,6 @@
 import React, { createContext } from 'react'
 export const AuthDataContext  = createContext()
-const ServerUrl = 'http://localhost:3000';
+const ServerUrl = 'https://linkdlclone.onrender.com';
 let value ={ 
     ServerUrl
 }
