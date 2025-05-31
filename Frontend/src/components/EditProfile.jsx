@@ -140,7 +140,7 @@ const EditProfile = () => {
                 formdata.append("coverImage", backendCoverImage)
             }
 
-            let result = await axios.put('http://localhost:3000' + '/api/user/updateprofile', formdata,
+            let result = await axios.put(ServerUrl + '/api/user/updateprofile', formdata,
                 { withCredentials: true })
             setsaving(false)
             setEdit(false)
