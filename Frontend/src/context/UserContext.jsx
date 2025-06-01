@@ -5,9 +5,10 @@ import { useNavigate } from 'react-router-dom'
 import { io } from 'socket.io-client';
  export const UserDataContext = createContext() 
 // export let socket = io("https://linkdlclone.onrender.com")
+import { io } from "socket.io-client";
+
 const socket = io("https://linkdlclone.onrender.com", {
-  transports: ["websocket"],
-  upgrade: false,
+  transports: ["websocket", "polling"],
   withCredentials: true
 });
 
