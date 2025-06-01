@@ -14,16 +14,31 @@ import notificationRouter from "./routes/notification.route.js";
 dotenv.config();
 const app = express();
 const server = http.createServer(app)
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://linkdlclone-frontend-n3dn.onrender.com"
+];
+
 export const io = new Server(server,{
-  cors:({
-    origin: 'https://linkdlclone-frontend-n3dn.onrender.com',
+ cors: {
+    origin: [
+      "http://localhost:5173",
+      "https://linkdlclone-frontend-n3dn.onrender.com"
+    ],
+    methods: ["GET", "POST","PUT","DELETE"],
     credentials: true
-  })
+  }
 })
 app.use(cookieParser());
 app.use(express.json());
 app.use(cors({
-  origin: 'https://linkdlclone-frontend-n3dn.onrender.com',
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true
 }));
 
